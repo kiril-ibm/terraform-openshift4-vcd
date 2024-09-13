@@ -29,10 +29,16 @@ ${indent(2, "additionalTrustBundle: |\n${file(var.additionalTrustBundle)}")}
 %{endif}
 %{if var.airgapped["enabled"]}imageContentSources:
 - mirrors:
-  - ${var.airgapped["mirror_fqdn"]}:${var.airgapped["mirror_port"]}/${var.airgapped["mirror_repository"]}
+  - bastion.vdc.nazare.test.nazare.ocp:5004/openshift/release
+  source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
+- mirrors:
+  - bastion.vdc.nazare.test.nazare.ocp:5004/openshift/release-images
   source: quay.io/openshift-release-dev/ocp-release
 - mirrors:
-  - ${var.airgapped["mirror_fqdn"]}:${var.airgapped["mirror_port"]}/${var.airgapped["mirror_repository"]}
+  - bastion.vdc.nazare.test.nazare.ocp:5004/openshift/release
+  source: quay.io/openshift-release-dev/ocp-release
+- mirrors:
+  - bastion.vdc.nazare.test.nazare.ocp:5004/openshift/release-images
   source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
 %{endif}
 %{if var.proxy_config["enabled"]}proxy:
@@ -354,10 +360,16 @@ metadata:
 spec:
   repositoryDigestMirrors:
   - mirrors:
-    - ${var.airgapped["mirror_fqdn"]}:${var.airgapped["mirror_port"]}/${var.airgapped["mirror_repository"]}
+    - bastion.vdc.nazare.test.nazare.ocp:5004/openshift/release
+    source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
+  - mirrors:
+    - bastion.vdc.nazare.test.nazare.ocp:5004/openshift/release-images
     source: quay.io/openshift-release-dev/ocp-release
   - mirrors:
-    - ${var.airgapped["mirror_fqdn"]}:${var.airgapped["mirror_port"]}/${var.airgapped["mirror_repository"]}
+    - bastion.vdc.nazare.test.nazare.ocp:5004/openshift/release
+    source: quay.io/openshift-release-dev/ocp-release
+  - mirrors:
+    - bastion.vdc.nazare.test.nazare.ocp:5004/openshift/release-images
     source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
 EOF
 }
